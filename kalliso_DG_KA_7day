@@ -1,3 +1,13 @@
-when running make install, need to use sudo make install
-kallisto index -i mousetranscripts.idx Mus_musculus.GRCm38.rel79.cdna.all.fa.gz
- 
+step 1: clone kallisto from Github and install, download fasta file for mouse transcriptome 
+
+     when running make install, need to use sudo make install
+step 2: copy fastq.gz files into a folder
+
+step 3: make index file for the transcriptome (mouse)
+
+      kallisto index -i mousetranscripts.idx Mus_musculus.GRCm38.rel79.cdna.all.fa.gz
+
+step 4: alignment
+
+      ~/kallisto$ kallisto quant -i mousetranscripts.idx -o output -b 100 --single -l 350 -s 100 ~/kallisto/DG7dayKA/lane7-s036-*_R1_001.fastq.gz
+
