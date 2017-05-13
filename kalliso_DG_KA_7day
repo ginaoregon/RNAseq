@@ -1,0 +1,3 @@
+when running make install, need to use sudo make install
+kallisto index -i mousetranscripts.idx Mus_musculus.GRCm38.rel79.cdna.all.fa.gz
+ 
