@@ -11,3 +11,6 @@ step 4: alignment
 
       ~/kallisto$ kallisto quant -i mousetranscripts.idx -o output -b 100 --single -l 350 -s 100 ~/kallisto/DG7dayKA/lane7-s036-*_R1_001.fastq.gz
 
+step 5 clone sleuth depository and install sleuth
+
+step 6 transcript level differential analysis using sleuth
