@@ -13,4 +13,33 @@ step 4: alignment
 
 step 5 clone sleuth depository and install sleuth
 
-step 6 transcript level differential analysis using sleuth
+     make sure your linux is ready to find the library path of R, if not run this first in linux terminal:
+     sudo apt-get install libcurl4-openssl-dev libxml2-dev
+     
+
+step 6 summarize transcript level estimated counts TSV file to gene level count table for DEseq2
+     R studio 1.0.143, R version 3.3
+     > biocLite("TxDb.Mmusculus.UCSC.mm10.ensGene")
+     > Library("TxDb.Mmusculus.UCSC.mm10.ensGene")
+     > txdb <-TxDb.Mmusculus.UCSC.mm10.ensGene
+     > k <- keys (txdb,keytype ="GENEID")
+     > df <- select (txdb, keys=k, keytype = "GENEID", columns="TXNAME")
+     'select()' returned 1:many mapping between keys and columns
+     > columns(txdb)
+ [1] "CDSCHROM"   "CDSEND"     "CDSID"      "CDSNAME"    "CDSSTART"   "CDSSTRAND" 
+ [7] "EXONCHROM"  "EXONEND"    "EXONID"     "EXONNAME"   "EXONRANK"   "EXONSTART" 
+[13] "EXONSTRAND" "GENEID"     "TXCHROM"    "TXEND"      "TXID"       "TXNAME"    
+[19] "TXSTART"    "TXSTRAND"   "TXTYPE" 
+     > tx2gene <- df[,2:1]
+     >> head(tx2gene,n=10)
+               TXNAME             GENEID
+1  ENSMUST00000000001 ENSMUSG00000000001
+2  ENSMUST00000000003 ENSMUSG00000000003
+3  ENSMUST00000114041 ENSMUSG00000000003
+4  ENSMUST00000000028 ENSMUSG00000000028
+5  ENSMUST00000096990 ENSMUSG00000000028
+6  ENSMUST00000115585 ENSMUSG00000000028
+7  ENSMUST00000136359 ENSMUSG00000000031
+8  ENSMUST00000152754 ENSMUSG00000000031
+9  ENSMUST00000140716 ENSMUSG00000000031
+10 ENSMUST00000132294 ENSMUSG00000000031
