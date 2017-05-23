@@ -43,3 +43,32 @@ step 6 summarize transcript level estimated counts TSV file to gene level count 
 8  ENSMUST00000152754 ENSMUSG00000000031
 9  ENSMUST00000140716 ENSMUSG00000000031
 10 ENSMUST00000132294 ENSMUSG00000000031
+create a samples.txt containing samples info with $run collum to iterate sample IDs
+> files <- file.path("~","kallisto","samples",samples$run,"abundance.tsv")
+
+> all(file.exists(files))
+[1] TRUE
+> names(files) <- paste0("sample", 1:7)
+> txi.kallisto.tsv <-tximport(files, type="kallisto",tx2gene=tx2gene)
+reading in files
+1 2 3 4 5 6 7 
+transcripts missing genes: 7059
+summarizing abundance
+summarizing counts
+summarizing length
+> head(txi.kallisto.tsv$counts)
+                     sample1     sample2   sample3    sample4    sample5 sample6
+ENSMUSG00000000001 789.00000  471.000000 462.00000  980.00000  895.00000  902.00
+ENSMUSG00000000003   0.00000    0.000000   0.00000    0.00000    1.00000    0.00
+ENSMUSG00000000028  78.00000    5.000004 261.99960   15.00000   64.00000    8.00
+ENSMUSG00000000037  33.00003    9.000001  29.00001   44.99997   83.99996   14.00
+ENSMUSG00000000049   7.00000    4.000000   0.00000   19.99999    7.00000    3.00
+ENSMUSG00000000056 944.14176 1697.790000 826.75480 1368.30722 1961.41700 1239.19
+                      sample7
+ENSMUSG00000000001  731.00000
+ENSMUSG00000000003    1.00000
+ENSMUSG00000000028   46.99997
+ENSMUSG00000000037    4.00000
+ENSMUSG00000000049    0.00000
+ENSMUSG00000000056 1414.38000
+
