@@ -71,4 +71,35 @@ ENSMUSG00000000028   46.99997
 ENSMUSG00000000037    4.00000
 ENSMUSG00000000049    0.00000
 ENSMUSG00000000056 1414.38000
+> samples <- c("sample1","sample2", "sample3", "sample4", "sample5", "sample6", "sample7")
+> condition <- c("KA","KA","KA","KA","ctrl","ctrl","ctrl")
+> samplesheet <- data.frame(samples,condition)
+> samplesheet
+  samples condition
+1 sample1        KA
+2 sample2        KA
+3 sample3        KA
+4 sample4        KA
+5 sample5      ctrl
+6 sample6      ctrl
+7 sample7      ctrl
+> ddsTxi <- DESeqDataSetFromTximport(txi.kallisto.tsv,colData=samplesheet,design=~condition)
+using counts and average transcript lengths from tximport
+> ddsTxi
+class: DESeqDataSet 
+dim: 28461 7 
+metadata(1): version
+assays(2): counts avgTxLength
+rownames(28461): ENSMUSG00000000001 ENSMUSG00000000003 ...
+  ENSMUSG00000099313 ENSMUSG00000099325
+rowData names(0):
+colnames(7): sample1 sample2 ... sample6 sample7
+colData names(2): samples condition
+> class(ddsTxi)
+[1] "DESeqDataSet"
+attr(,"package")
+[1] "DESeq2"
+####now ddsTxi can be used as dds in DEseq2 analysis
 
+step 7 DEseq2 analysis_data distribution analysis
+step 8 DEseq2 analysis_filter low counts (necessary for very limited starting material)
