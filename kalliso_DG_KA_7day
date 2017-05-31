@@ -11,7 +11,7 @@ step 4: alignment
 
       ~/kallisto$ kallisto quant -i mousetranscripts.idx -o output -b 100 --single -l 350 -s 100 ~/kallisto/DG7dayKA/lane7-s036-*_R1_001.fastq.gz
 
-step 5 clone sleuth depository and install sleuth
+step 5 clone sleuth depository and install sleuth ( sleuth is not needed if using DEseq2 analysis)
 
      make sure your linux is ready to find the library path of R, if not run this first in linux terminal:
      sudo apt-get install libcurl4-openssl-dev libxml2-dev
