@@ -1,10 +1,7 @@
-alldata= read.table("~/STAR_filter.txt", header=T, sep="\t",na.strings="NA", fill=T,strip.white=T,blank.lines.skip=F,as.is=T, row.names=1)
-countsTable.ori = alldata
-countsTable = alldata
-conds = c('r1','g1','r3','g3','r4','g4','r5','g5','r7','g7')
-conds = as.factor(conds)
+countsTable= read.table("~/STAR_filter.txt", header=T, sep="\t",na.strings="NA", fill=T,strip.white=T,blank.lines.skip=F,as.is=T, row.names=1)
+conds = as.factor(c('r1','g1','r3','g3','r4','g4','r5','g5','r7','g7'))
 
-alldata.value = countsTable.ori
+alldata.value = countsTable
 alldata.log2.value = log2(alldata.value + 1)
 alldata.log2 = cbind(row.names=alldata.log2.value, alldata.log2.value)
 colnames(alldata.log2) = c("gene", colnames(alldata.value) )
@@ -18,11 +15,11 @@ dev.off()
 
 cut1 = 2^3
 cut1
+df$max <- do.call(pmax,df[1:7])
 countsTable <- subset(countsTable,max > 8)
 head(countsTable)
 dim(countsTable)
 
-### plot data shapes of filtered data 
 ### plot data shapes of filtered data 
 "Plot data shapes of filtered data"
 alldata.value = countsTable
